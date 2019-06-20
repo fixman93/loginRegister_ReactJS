@@ -9,7 +9,6 @@ configure({ adapter: new Adapter() })
 describe('Render App', () => {
 
   const app = shallow(<App />)
-  console.log(app.debug())
   it('render app properly', () => {
     expect(app).toMatchSnapshot()
   })
