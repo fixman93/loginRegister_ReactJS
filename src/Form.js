@@ -12,21 +12,27 @@ export class Form extends Component {
   }
 
   loginSubmit = (e) => {
-    this.setState({
-      loggedIn: true
-    })
+    const { email, password } = this.state
+    if (email !== '' && password !== '') {
+      this.setState({
+        loggedIn: true
+      })
+    }
+
   }
   render() {
+    const { loggedIn } = this.state
     return (
       <div>
         <form>
           <label>
-            <input type='email' placeholder='Email' onChange={event => this.setState({ email: event.target.value })} />
+            <input type='email' className='email-input' placeholder='Email' onChange={event => this.setState({ email: event.target.value })} />
           </label>
           <label>
-            <input type='password' placeholder='Password' onChange={event => this.setState({ password: event.target.value })} />
+            <input type='password' className='password-input' placeholder='Password' onChange={event => this.setState({ password: event.target.value })} />
           </label>
           <button className='submit-btn' onClick={this.loginSubmit}>Login</button>
+          {loggedIn ? <div>Logged In</div> : <div>Logged Out</div>}
         </form>
       </div>
     )

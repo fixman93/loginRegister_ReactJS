@@ -16,13 +16,35 @@ describe('Render App', () => {
     expect(form.state()).toEqual({ email: '', password: '', loggedIn: false })
   })
   describe('When the user click submit form', () => {
-    let loggedIn = true
+    let loggedIn = false
     beforeEach(() => {
       form.find('.submit-btn').simulate('click')
     })
 
     it('User successful logged in', () => {
       expect(form.state().loggedIn).toEqual(loggedIn)
+    })
+  })
+
+  describe('When type into email input', () => {
+    const email = 'test@test.com'
+    beforeEach(() => {
+      form.find('.email-input').simulate('change', { target: { value: email } })
+    })
+
+    it('Update the email in `state`', () => {
+      expect(form.state().email).toEqual(email)
+    })
+  })
+
+  describe('When type into password input', () => {
+    const password = '123'
+    beforeEach(() => {
+      form.find('.password-input').simulate('change', { target: { value: password } })
+    })
+
+    it('Update the password in `state`', () => {
+      expect(form.state().password).toEqual(password)
     })
   })
 })
