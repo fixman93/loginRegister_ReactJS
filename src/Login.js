@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-export class Form extends Component {
+export class Login extends Component {
 
   constructor(props) {
     super(props)
@@ -18,6 +18,11 @@ export class Form extends Component {
         loggedIn: true
       })
     }
+    else {
+      this.setState({
+        loggedIn: false
+      })
+    }
 
   }
   render() {
@@ -31,7 +36,7 @@ export class Form extends Component {
           <label>
             <input type='password' className='password-input' placeholder='Password' onChange={event => this.setState({ password: event.target.value })} />
           </label>
-          <button className='submit-btn' onClick={this.loginSubmit}>Login</button>
+          <a className='submit-btn' onClick={this.loginSubmit}>Login</a>
           {loggedIn ? <div>Logged In</div> : <div>Logged Out</div>}
         </form>
       </div>
@@ -39,4 +44,4 @@ export class Form extends Component {
   }
 }
 
-export default Form
+export default Login

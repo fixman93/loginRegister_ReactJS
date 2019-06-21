@@ -15,7 +15,7 @@ describe('Render App', () => {
   })
 
   it('find login/register form', () => {
-    expect(app.find('Form').exists()).toBe(true)
+    expect(app.find('Login').exists()).toBe(true)
   })
 
 })

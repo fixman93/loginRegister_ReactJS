@@ -1,13 +1,13 @@
 import React from 'react'
 import Adapter from 'enzyme-adapter-react-16'
 import { shallow, configure } from 'enzyme'
-import Form from './Form'
+import Login from './Login'
 
 
 configure({ adapter: new Adapter() })
 
 describe('Render App', () => {
-  const form = shallow(<Form />)
+  const form = shallow(<Login />)
   it('render Form properly', () => {
     expect(form).toMatchSnapshot()
   })
