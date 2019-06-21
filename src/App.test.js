@@ -7,8 +7,9 @@ import App from './App'
 configure({ adapter: new Adapter() })
 
 describe('Render App', () => {
-
-  const app = shallow(<App />)
+  const mockLogin = jest.fn()
+  const props = { loginSubmit: mockLogin }
+  const app = shallow(<App {...props} />)
   it('render app properly', () => {
     expect(app).toMatchSnapshot()
   })
@@ -16,4 +17,5 @@ describe('Render App', () => {
   it('find login/register form', () => {
     expect(app.find('Form').exists()).toBe(true)
   })
+
 })
