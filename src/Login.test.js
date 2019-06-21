@@ -24,6 +24,16 @@ describe('Render App', () => {
     it('User successful logged in', () => {
       expect(form.state().loggedIn).toEqual(loggedIn)
     })
+
+    describe('', () => {
+      beforeEach(() => {
+        form.setState({ loggedIn: true })
+      })
+      it('When user pass the form', () => {
+
+        expect(form.state().loggedIn).toEqual(true)
+      })
+    })
   })
 
   describe('When type into email input', () => {
