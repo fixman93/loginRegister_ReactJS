@@ -33,8 +33,16 @@ describe('Render App', () => {
     })
   })
 
+  describe('Register click', () => {
+    beforeEach(() => {
+      app.setState({ isLogin: false })
+      app.find('.register-tab').simulate('click')
+    })
+    it('Update state `isLogin`', () => {
+      expect(app.state().isLogin).toBe(false)
+    })
+  })
   describe('find register component', () => {
-
     beforeEach(() => {
       app.setState({ isLogin: false })
     })

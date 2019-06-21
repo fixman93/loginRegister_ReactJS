@@ -14,7 +14,6 @@ class App extends Component {
   }
 
   navMenu(nav) {
-    const { isLogin } = this.state
     if (nav === 'login') {
       this.setState({
         isLogin: true
