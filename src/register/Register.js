@@ -4,10 +4,7 @@ import { registerUser } from '../actions/register'
 
 
 export class Register extends Component {
-  // componentDidMount = () => {
-  //   console.log('props', this.props)
-  //   // await this.props.registerUser()
-  // }
+
   constructor(props) {
     super(props)
     this.state = {
