@@ -9,6 +9,10 @@ class Register extends Component {
       password: ''
     }
   }
+
+  handleRegistration = () => {
+    alert('it`s works')
+  }
   render() {
     return (
       <div>
