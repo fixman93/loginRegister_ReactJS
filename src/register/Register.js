@@ -4,21 +4,22 @@ import { registerUser } from '../actions/register'
 
 
 export class Register extends Component {
-  componentDidMount = async () => {
-    console.log('props', this.props)
-    await this.props.registerUser()
-  }
+  // componentDidMount = async () => {
+  //   console.log('props', this.props)
+  //   await this.props.registerUser()
+  // }
   constructor(props) {
     super(props)
     this.state = {
-      email: '',
-      password: ''
+      email: null,
+      password: null
     }
   }
 
-  handleRegistration = () => {
+  handleRegistration = (e) => {
+    e.preventDefault()
     const { email, password } = this.state
-    if (email !== '' && password !== '') {
+    if (email !== null && password !== null) {
       this.props.registerUser(this.state)
     }
   }

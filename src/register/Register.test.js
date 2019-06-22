@@ -38,12 +38,15 @@ describe('Render Register Component', () => {
   })
 
   describe('When user click `handleRegistration()`', () => {
+    let data = { email: 'test@test.com', password: 'test123' }
     beforeEach(() => {
-      register.find('.register-btn').simulate('click')
+      register.setState({ email: 'test@test.com', password: 'test123' })
+
+      register.find('.register-btn').simulate('click', { preventDefault() { } })
     })
 
     it('call function on click', () => {
-      expect(mockregisterUser).toHaveBeenCalled()
+      expect(mockregisterUser).toHaveBeenCalledWith(data)
     })
   })
 })
