@@ -4,26 +4,30 @@ import { registerUser } from '../actions/register'
 
 
 export class Register extends Component {
-  // componentDidMount = async () => {
+  // componentDidMount = () => {
   //   console.log('props', this.props)
-  //   await this.props.registerUser()
+  //   // await this.props.registerUser()
   // }
   constructor(props) {
     super(props)
     this.state = {
-      email: null,
-      password: null
+      email: '',
+      password: ''
     }
   }
 
-  handleRegistration = (e) => {
+  handleRegistration = async (e) => {
     e.preventDefault()
     const { email, password } = this.state
-    if (email !== null && password !== null) {
-      this.props.registerUser(this.state)
+    if (email !== '' && password !== '') {
+      await this.props.registerUser(this.state)
+      console.log('data', this.props.register)
+      localStorage.setItem('user', JSON.stringify(this.props.register))
     }
+
   }
   render() {
+
     return (
       <div>
         <form>
@@ -40,5 +44,9 @@ export class Register extends Component {
   }
 }
 
-
-export default connect(null, { registerUser })(Register)
+const mapStateToProps = (state) => {
+  return ({
+    register: state.register
+  })
+}
+export default connect(mapStateToProps, { registerUser })(Register)
