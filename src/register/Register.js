@@ -17,7 +17,10 @@ export class Register extends Component {
   }
 
   handleRegistration = () => {
-    alert('it`s works')
+    const { email, password } = this.state
+    if (email !== '' && password !== '') {
+      this.props.registerUser(this.state)
+    }
   }
   render() {
     return (
@@ -29,7 +32,7 @@ export class Register extends Component {
           <label htmlFor="registerPassword">
             <input type="password" id="registerPassword" placeholder="Password" onChange={event => this.setState({ password: event.target.value })} />
           </label>
-          <button onClick={this.handleRegistration}>Register</button>
+          <button className="register-btn" onClick={this.handleRegistration}>Register</button>
         </form>
       </div>
     )
@@ -37,4 +40,4 @@ export class Register extends Component {
 }
 
 
-export default connect(state => state, { registerUser })(Register)
+export default connect(null, { registerUser })(Register)

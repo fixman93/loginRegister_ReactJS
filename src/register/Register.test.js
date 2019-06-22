@@ -36,4 +36,14 @@ describe('Render Register Component', () => {
       expect(register.state().password).toEqual(password)
     })
   })
+
+  describe('When user click `handleRegistration()`', () => {
+    beforeEach(() => {
+      register.find('.register-btn').simulate('click')
+    })
+
+    it('call function on click', () => {
+      expect(mockregisterUser).toHaveBeenCalled()
+    })
+  })
 })
