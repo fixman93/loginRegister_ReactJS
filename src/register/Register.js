@@ -1,7 +1,13 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { registerUser } from '../actions/register'
 
-class Register extends Component {
 
+export class Register extends Component {
+  componentDidMount = async () => {
+    console.log('props', this.props)
+    await this.props.registerUser()
+  }
   constructor(props) {
     super(props)
     this.state = {
@@ -30,4 +36,5 @@ class Register extends Component {
   }
 }
 
-export default Register
+
+export default connect(state => state, { registerUser })(Register)

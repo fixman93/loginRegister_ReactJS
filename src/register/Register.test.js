@@ -2,12 +2,14 @@ import React from 'react'
 import Adapter from 'enzyme-adapter-react-16'
 import { shallow, configure } from 'enzyme'
 
-import Register from './Register'
+import { Register } from './Register'
 
 configure({ adapter: new Adapter() })
 
 describe('Render Register Component', () => {
-  const register = (shallow(<Register />))
+  const mockregisterUser = jest.fn()
+  const props = { registerUser: mockregisterUser }
+  const register = (shallow(<Register {...props} />))
 
   it('Register Snapshot', () => {
     expect(register).toMatchSnapshot()
