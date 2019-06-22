@@ -2,12 +2,14 @@ import React from 'react'
 import Adapter from 'enzyme-adapter-react-16'
 import { shallow, configure } from 'enzyme'
 
-import Register from './Register'
+import { Register } from './Register'
 
 configure({ adapter: new Adapter() })
 
 describe('Render Register Component', () => {
-  const register = (shallow(<Register />))
+  const mockregisterUser = jest.fn()
+  const props = { registerUser: mockregisterUser }
+  const register = (shallow(<Register {...props} />))
 
   it('Register Snapshot', () => {
     expect(register).toMatchSnapshot()
@@ -32,6 +34,19 @@ describe('Render Register Component', () => {
 
     it('Update password in `state`', () => {
       expect(register.state().password).toEqual(password)
+    })
+  })
+
+  describe('When user click `handleRegistration()`', () => {
+    let data = { email: 'test@test.com', password: 'test123' }
+    beforeEach(() => {
+      register.setState({ email: 'test@test.com', password: 'test123' })
+
+      register.find('.register-btn').simulate('click', { preventDefault() { } })
+    })
+
+    it('call function on click', () => {
+      expect(mockregisterUser).toHaveBeenCalledWith(data)
     })
   })
 })

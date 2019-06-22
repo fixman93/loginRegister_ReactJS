@@ -51,7 +51,7 @@ describe('Render App', () => {
       expect(app.state().isLogin).toBe(false)
     })
     it('find register component', () => {
-      expect(app.find('Register').exists()).toBe(true)
+      expect(app.find('Connect(Register)').exists()).toBe(true)
     })
   })
 

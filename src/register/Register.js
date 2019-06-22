@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { registerUser } from '../actions/register'
 
-class Register extends Component {
+
+export class Register extends Component {
 
   constructor(props) {
     super(props)
@@ -9,7 +12,19 @@ class Register extends Component {
       password: ''
     }
   }
+
+  handleRegistration = async (e) => {
+    e.preventDefault()
+    const { email, password } = this.state
+    if (email !== '' && password !== '') {
+      await this.props.registerUser(this.state)
+      console.log('data', this.props.register)
+      localStorage.setItem('user', JSON.stringify(this.props.register))
+    }
+
+  }
   render() {
+
     return (
       <div>
         <form>
@@ -19,11 +34,16 @@ class Register extends Component {
           <label htmlFor="registerPassword">
             <input type="password" id="registerPassword" placeholder="Password" onChange={event => this.setState({ password: event.target.value })} />
           </label>
-          <button onClick={this.handleRegistration}>Register</button>
+          <button className="register-btn" onClick={this.handleRegistration}>Register</button>
         </form>
       </div>
     )
   }
 }
 
-export default Register
+const mapStateToProps = (state) => {
+  return ({
+    register: state.register
+  })
+}
+export default connect(mapStateToProps, { registerUser })(Register)
