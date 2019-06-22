@@ -1,5 +1,5 @@
 
-## Available Scripts
+## Register/Login start package
 
 In the project directory, you can run:
 
