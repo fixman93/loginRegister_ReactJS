@@ -6,7 +6,7 @@ import Profile from './profile'
 configure({ adapter: new Adapter() })
 
 describe('render profile', () => {
-  const profile = shallow(<Profile />)
+  const profile = (shallow(<Profile />))
   it('snapshot profile page', () => {
     expect(profile).toMatchSnapshot()
   })

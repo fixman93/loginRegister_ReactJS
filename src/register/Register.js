@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { registerUser } from '../actions/register'
+import { Link } from 'react-router-dom'
 
 
 export class Register extends Component {
@@ -20,6 +21,7 @@ export class Register extends Component {
       await this.props.registerUser(this.state)
       console.log('data', this.props.register)
       localStorage.setItem('user', JSON.stringify(this.props.register))
+      localStorage.setItem('token', email + 'fdasfawr34r34rwadfdas')
     }
 
   }
@@ -35,6 +37,7 @@ export class Register extends Component {
             <input type="password" id="registerPassword" placeholder="Password" onChange={event => this.setState({ password: event.target.value })} />
           </label>
           <button className="register-btn" onClick={this.handleRegistration}>Register</button>
+          <Link to='/profile' >Profile</Link>
         </form>
       </div>
     )

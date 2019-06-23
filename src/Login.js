@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-
+import { Link } from 'react-router-dom'
 export class Login extends Component {
 
   constructor(props) {
@@ -12,16 +12,21 @@ export class Login extends Component {
   }
 
   loginSubmit = (e) => {
+    let user
     const { email, password } = this.state
-    if (email !== '' && password !== '') {
-      this.setState({
-        loggedIn: true
-      })
-    }
-    else {
-      this.setState({
-        loggedIn: false
-      })
+    user = JSON.parse(localStorage.getItem('user'))
+    console.log('user', user)
+    if (user && user.email !== null) {
+      if (email === user.email && password === user.password) {
+        this.setState({
+          loggedIn: true
+        })
+      }
+      else {
+        this.setState({
+          loggedIn: false
+        })
+      }
     }
 
   }
@@ -36,8 +41,8 @@ export class Login extends Component {
           <label>
             <input type='password' className='password-input' placeholder='Password' onChange={event => this.setState({ password: event.target.value })} />
           </label>
-          <a className='submit-btn' onClick={this.loginSubmit}>Login</a>
-          {loggedIn ? <div>Logged In</div> : <div>Logged Out</div>}
+          <a className='submit-btn' onClick={this.loginSubmit}>Login</a><br />
+          {loggedIn ? <Link to='/profile'>Profile</Link> : <div>Sign In</div>}
         </form>
       </div>
     )
