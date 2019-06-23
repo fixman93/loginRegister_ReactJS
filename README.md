@@ -1,6 +1,13 @@
 
 ## Register/Login start package
 
+- Unit Test (Jest and Enzyme)
+- Routes 
+- Redux
+- LocalStorage
+
+You have 24 success tests
+
 In the project directory, you can run:
 
 ### `npm start`
