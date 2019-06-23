@@ -6,6 +6,9 @@
 - Redux
 - LocalStorage
 
+## Profile
+- You must be logged in to see Profile page
+
 You have 24 success tests
 
 In the project directory, you can run:
