@@ -33,7 +33,9 @@ export class Login extends Component {
   render() {
     const { loggedIn } = this.state
     return (
-      <div>
+      <div className='form'>
+        <span>Login</span>
+        <br /><br />
         <form>
           <label>
             <input type='email' className='email-input' placeholder='Email' onChange={event => this.setState({ email: event.target.value })} />

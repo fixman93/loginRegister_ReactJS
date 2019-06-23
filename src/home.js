@@ -31,8 +31,8 @@ class Home extends Component {
 
         <div className="nav">
           <ul>
-            <li className='login-tab' onClick={() => this.navMenu('login')}>Login</li>
-            <li className='register-tab' onClick={() => this.navMenu('register')}>Register</li>
+            <li className={isLogin ? 'login-tab active' : 'login-tab'} onClick={() => this.navMenu('login')}>Login</li>
+            <li className={isLogin ? 'register-tab ' : 'register-tab active'} onClick={() => this.navMenu('register')}>Register</li>
           </ul>
         </div>
         {isLogin ? <Login /> : <Register />}

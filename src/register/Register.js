@@ -22,13 +22,19 @@ export class Register extends Component {
       console.log('data', this.props.register)
       localStorage.setItem('user', JSON.stringify(this.props.register))
       localStorage.setItem('token', email + 'fdasfawr34r34rwadfdas')
+      alert('Welcome ' + email)
+      this.setState({
+        registerFinished: true
+      })
     }
 
   }
   render() {
 
     return (
-      <div>
+      <div className='form'>
+        <span>Register</span>
+        <br /><br />
         <form>
           <label htmlFor="registerEmail">
             <input type="text" id="registerEmail" placeholder="Email" onChange={event => this.setState({ email: event.target.value })} />
@@ -37,7 +43,7 @@ export class Register extends Component {
             <input type="password" id="registerPassword" placeholder="Password" onChange={event => this.setState({ password: event.target.value })} />
           </label>
           <button className="register-btn" onClick={this.handleRegistration}>Register</button>
-          <Link to='/profile' >Profile</Link>
+          {this.state.registerFinished ? <Link to='/profile' >Profile</Link> : null}
         </form>
       </div>
     )
