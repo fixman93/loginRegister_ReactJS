@@ -7,7 +7,8 @@ export class Login extends Component {
     this.state = {
       loggedIn: false,
       email: '',
-      password: ''
+      password: '',
+      setup: false
     }
   }
 
