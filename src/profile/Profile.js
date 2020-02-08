@@ -11,7 +11,7 @@ class Profile extends Component {
       return (
         <div>
           Profile<br />
-          <Link to='/'>Login/Register page</Link>
+          <Link to='/'>Login/Register Page</Link>
         </div>
       )
     }
