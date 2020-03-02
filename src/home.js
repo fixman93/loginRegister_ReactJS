@@ -28,7 +28,6 @@ class Home extends Component {
     const { isLogin } = this.state
     return (
       <div className="App">
-
         <div className="nav">
           <ul>
             <li className={isLogin ? 'login-tab active' : 'login-tab'} onClick={() => this.navMenu('login')}>Login</li>
